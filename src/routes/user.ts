@@ -1,12 +1,12 @@
 import { Router } from "express";
-  import UserController from "../controllers/UserController";
-  import { checkJwt } from "../middlewares/checkJwt";
-  import { checkRole } from "../middlewares/checkRole";
+import UserController from "../controllers/UserController";
+import { checkJwt } from "../middlewares/checkJwt";
+import { checkRole } from "../middlewares/checkRole";
 
-  const router = Router();
+const router = Router();
 
   //Get all users
-  router.get("/get", [checkJwt, checkRole(["ADMIN"])], UserController.listAll);
+  router.get("/get", [checkJwt], UserController.listAll);
   router.get("/", UserController.listAll);
 
   // Get one user
