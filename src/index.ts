@@ -5,6 +5,8 @@ import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
 import * as cors from "cors";
 import routes from "./routes";
+import * as multer from "multer";
+var upload = multer();
 
 //Connects to the Database -> then starts the express
 createConnection()
@@ -16,7 +18,8 @@ createConnection()
     app.use(cors());
     app.use(helmet());
     app.use(bodyParser.json());
-
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(upload.array());
     //Set all routes from routes folder
     app.use("/", routes);
 

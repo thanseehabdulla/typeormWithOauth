@@ -42,4 +42,5 @@ import {
     checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
       return bcrypt.compareSync(unencryptedPassword, this.password);
     }
+    
   }
